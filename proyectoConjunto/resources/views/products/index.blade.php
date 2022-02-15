@@ -3,7 +3,10 @@
 @push('scripts')
     <script defer src="/js/index.js"></script>
 @endpush
-<link rel="stylesheet" href="/css/style.css">
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+@endpush
+
 @section('titulo', 'Listado de productos')
 
 @section('cuerpo')

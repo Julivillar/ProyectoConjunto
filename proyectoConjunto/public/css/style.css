@@ -3,14 +3,17 @@ span {
     display: none;
 }
 
-formClass{
+/* #formClass{
     display: none;
-}
+} */
 
 #resetButton {
     display:none;
 }
+.textContent{
 
-#loadButton {
-    display:block;
 }
+#loadButton {
+    display:none;
+}
+
