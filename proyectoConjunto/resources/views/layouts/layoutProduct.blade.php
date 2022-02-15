@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        @include('partials.headerIndex')
+        @include('partials.header')
     </header>
     @yield('cuerpo')
     <footer>

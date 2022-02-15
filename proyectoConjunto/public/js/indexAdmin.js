@@ -14,8 +14,10 @@ async function fetchProductsIndexJSON(counter) {
 /**
  * llamada a la funcion asincrona
  */
-counter = 0;
-//currentCategory = 0;
+
+// counter = 0;
+// currentCategory = 0;
+
 
 if (currentCategory === 0) {
     console.log(currentCategory + "la cat");

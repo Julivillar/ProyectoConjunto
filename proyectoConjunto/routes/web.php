@@ -34,9 +34,7 @@ Route::resource('/categories', CategoryController::class)
 ->missing(function (Request $request){
     return Redirect::route('products.index');
 }); */
-Route::resource('/products/{category?}', function($category = 0){
-    return('products.index');
-}, ProductController::class)
+Route::resource('/products', ProductController::class)
 ->missing(function (Request $request){
     return Redirect::route('products.index');
 });

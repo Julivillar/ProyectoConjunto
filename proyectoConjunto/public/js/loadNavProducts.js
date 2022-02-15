@@ -1,5 +1,5 @@
 let counter = 0;
-// let currentCategory = 0;
+//let currentCategory = 0;
 
 let categories = document.querySelectorAll('.categoria');
 
