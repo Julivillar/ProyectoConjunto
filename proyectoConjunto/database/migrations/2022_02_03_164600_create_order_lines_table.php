@@ -15,11 +15,12 @@ class CreateOrderLinesTable extends Migration
     {
         Schema::create('order_lines', function (Blueprint $table) {
             $table->id();
+            $table->integer('line_number');
             $table->foreignId('order_id')->constrained();
             $table->foreignId('product_id')->constrained();
-            $table->integer('line_number');
             $table->integer('amount');
             $table->double('price');
+            $table->double('discount');
             $table->timestamps();
 
         });

@@ -16,8 +16,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
+}); */
+
+Route::resource('/', ProductController::class)
+->missing(function (Request $request){
+    return Redirect::route('products.index');
 });
 
 Route::resource('/categories', CategoryController::class)
