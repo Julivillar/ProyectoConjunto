@@ -29,8 +29,8 @@
 </div>
 <nav>
     <ul class="categorias">
-        <li><a href="{{route('products.index', 1)}}"  data-value=1 class='categoria'> Libros </a></li>
-        <li><a href="{{route('products.index', 2)}}"  data-value=2 class='categoria'> Juegos </a></li>
-        <li><a href="{{route('products.index', 3)}}"  data-value=3 class='categoria'> Complementos </a></li>
+        <li><a href="#" data-value=1 class='categoria'> Libros </a></li>
+        <li><a href="#" data-value=2 class='categoria'> Juegos </a></li>
+        <li><a href="#" data-value=3 class='categoria'> Complementos </a></li>
     </ul>
 </nav>

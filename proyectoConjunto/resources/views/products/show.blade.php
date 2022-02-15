@@ -3,7 +3,6 @@
 @section('titulo', 'Producto')
 
 @section('cuerpo')
-    <script defer src="/js/show.js"></script>
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <div class="textContent">
         <h1>

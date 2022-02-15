@@ -3,9 +3,10 @@
     @if (isset($user->role) && $user->role == 'Admin')
         <script defer src="/js/indexAdmin.js"></script>
     @else
-
         <script defer src="/js/index.js"></script>
     @endif
+    <script defer src="/js/loadNavProducts.js"></script>
+    <script defer>let currentCategory = {{$category}}; </script>
 @endpush
 
 

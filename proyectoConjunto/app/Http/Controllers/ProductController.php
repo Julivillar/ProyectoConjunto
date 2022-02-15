@@ -18,8 +18,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($category = 0)//
     {
+
         $user = Auth::user();
 
         return view('products.index', compact('user'));

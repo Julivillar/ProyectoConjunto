@@ -2,6 +2,8 @@
  * Funcion asincrona para mostrar todos los productos visibles
  * @returns
  */
+
+
 async function fetchProductsIndexJSON(counter) {
     let products = await fetch(`/api/products/${counter}`);
     console.log(products);
@@ -50,7 +52,7 @@ fetchProductsIndexJSON(counter).then(productsJSON => {
 })
 
 
-let categories = document.querySelectorAll('.categoria');
+/* let categories = document.querySelectorAll('.categoria');
 
 for (let category of categories) {
     category.addEventListener('click', function (event) {
@@ -90,7 +92,7 @@ for (let category of categories) {
             });
         }
     })
-}
+} */
 
 document.querySelector('#loadButton').onclick = function () {
 
