@@ -3,6 +3,9 @@
 @push('scripts')
     <script defer src="{{asset('js/validacionEdit.js')}}"></script>
 @endpush
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+@endpush
 @section('titulo', 'Actualizar')
 
 @section('cuerpo')
