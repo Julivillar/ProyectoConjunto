@@ -21,9 +21,8 @@ class ProductApiController extends Controller
      */
     public function index($counter)
     {
-        //
-        $products = Product::where('visibility', 1)
-            ->orderBy('id', 'asc')
+
+        $products = Product::orderBy('id', 'asc')
             ->skip($counter)
             ->take(10)
             ->get();

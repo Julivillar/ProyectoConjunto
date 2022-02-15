@@ -1,8 +1,14 @@
 @extends('layouts.layout')
-
 @push('scripts')
-    <script defer src="/js/index.js"></script>
+    @if (isset($user->role) && $user->role == 'Admin')
+        <script defer src="/js/indexAdmin.js"></script>
+    @else
+
+        <script defer src="/js/index.js"></script>
+    @endif
 @endpush
+
+
 @push('styles')
     <link rel="stylesheet" type="text/css" href="css/style.css">
 @endpush

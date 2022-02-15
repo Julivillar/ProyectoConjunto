@@ -1,5 +1,5 @@
 span {
-    color: red;
+    color: blue;
     display: none;
 }
 
@@ -10,10 +10,5 @@ span {
 #resetButton {
     display:none;
 }
-.textContent{
 
-}
-#loadButton {
-    display:none;
-}
 

@@ -7,12 +7,21 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <div class="textContent">
         <h1>
-            <a href="{{ route('categories.show', $product->category->id) }}"> {{ $product->category->name }} </a>
+            {{ $product->name }}
         </h1>
 
         <p>
             {{ $product->description }}
         </p>
+
+        <p>{{$product->price}} €</p>
+
+        @if ($product->stock <=5)
+        <p>
+           <span> Solo quedan {{$product->stock}} unidades </span>
+        </p>
+        @endif
+
 
         <p>
             Fecha: {{ $product->created_at }}
@@ -24,11 +33,12 @@
         </p>
         @if (isset($user->role) && $user->role == 'Admin')
             <a href="{{ route('products.edit', $product->id) }}">Editar</a>
+
         @else
             añadir al carrito
         @endif
 
     </div>
-    <button id="loadButton">Cargar Mas</button>
+
 
 @endsection

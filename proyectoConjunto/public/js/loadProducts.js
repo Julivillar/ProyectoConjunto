@@ -1,54 +1,5 @@
-/**
- * Funcion asincrona para mostrar todos los productos visibles
- * @returns
- */
-async function fetchProductsIndexJSON(counter) {
-    let products = await fetch(`/api/products/${counter}`);
-    console.log(products);
-    let productsJSON = await products.json();
-    console.log(productsJSON);
-    return productsJSON;
-}
-/**
- * llamada a la funcion asincrona
- */
 let counter = 0;
 let currentCategory = 0;
-
-fetchProductsIndexJSON(counter).then(productsJSON => {
-    //console.log(productsJSON[2]);
-    for (let product of productsJSON[0]) {
-        if (product.visibility == 1) {
-            //muestra todos los productos visibles y monta la estructura
-            let div = document.createElement('div');
-            let img = document.createElement('img');
-            // Busca y muestra la imagen por defecto
-            for (let i = 0; i < productsJSON[1].length; i++) {
-                if (productsJSON[1][i].product_id === product.id && productsJSON[1][i].default == 1) {
-                    let prod_img = productsJSON[1][i];
-                    img.src = "/images/" + prod_img.path;
-                }
-            }
-
-            div.classList.add('flexContainer', 'productContainer');
-            let a = document.createElement('a');
-            a.textContent = 'Nombre: ' + product.name;
-            a.href = `/products/${product.id}`;
-            // let category = document.createElement('p');
-            // category.textContent = 'Categoria ' + product.category.name;
-            let price = document.createElement('p');
-            price.textContent = 'Precio: ' + product.price + '€';
-            let stock = document.createElement('p');
-            stock.textContent = 'Stock: ' + product.stock;
-            div.append(img, a, price, stock);
-            document.querySelector('.textContent').append(div);
-        }
-        counter = counter + 10;
-    }
-
-
-})
-
 
 let categories = document.querySelectorAll('.categoria');
 

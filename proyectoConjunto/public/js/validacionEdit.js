@@ -1,36 +1,5 @@
-// async function fetchCategoriesJSON() {
-//     let categories = await fetch("{{ route('categoriesApi.index') }}");
-//     console.log(categories);
-//     let categoriesJSON = await categories.json();
-//     console.log(categoriesJSON);
-//     return categoriesJSON;
-// }
 
-// fetchCategoriesJSON().then(categories => {
-//     for (let category of categories) {
-//         let option = document.createElement('option');
-//         option.setAttribute('value', category.id);
-//         option.textContent = category.name;
-//         form.elements['category'].append(option);
-//     }
-// })
 let form = document.querySelector('.formClass');
-// let createProductButton = document.querySelector('#createProductButton');
-// let submitButton = document.querySelector('#submitButton');
-// let cancelButton = document.querySelector('#cancelButton');
-
-
-
-// createProductButton.onclick = function() {
-//     form.style.display = 'block';
-//     createProductButton.style.display = 'none';
-// }
-
-// cancelButton.onclick = function() {
-//     document.querySelector('#resetButton').click();
-//     form.style.display = 'none';
-//     createProductButton.style.display = 'inline';
-// }
 
 document.querySelector('.formClass').onsubmit = function(event) {
     let correctData = true;

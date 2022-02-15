@@ -20,8 +20,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get();
-        return view('products.index', compact('products'));
+        $user = Auth::user();
+
+        return view('products.index', compact('user'));
     }
 
     /**
