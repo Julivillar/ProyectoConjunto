@@ -6,22 +6,21 @@
 
         <script defer src="/js/index.js"></script>
     @endif
+    <script defer src="/js/loadProducts.js"></script>
 @endpush
-
-
 @push('styles')
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href={{asset('css/style1.css')}}>
 @endpush
+
 
 @section('titulo', 'Listado de productos')
 
 @section('cuerpo')
+<div class="textContent">
 
-    <main>
-        <div class="textContent">
+</div>
 
-        </div>
-        <button id="loadButton">Cargar Mas</button>
-    </main>
+<div id="containerButtonLoad"><button id="loadButton">Cargar Más</button></div>
+
 
 @endsection

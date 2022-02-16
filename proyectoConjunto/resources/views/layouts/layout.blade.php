@@ -7,13 +7,23 @@
     {{-- <script src="/js/loadProducts.js"></script>  --}}
     @stack('scripts')
     @stack('styles')
+    {{-- <link rel="stylesheet" href="css/style1.css"> --}}
     <title>@yield('titulo')</title>
 </head>
 <body>
     <header>
         @include('partials.header')
     </header>
-    @yield('cuerpo')
+    <nav>
+        @include('partials.nav')
+    </nav>
+
+    <main>
+        <div class="flexContainer">
+            @yield('cuerpo')
+        </div>
+    </main>
+
     <footer>
         @include('partials.footer')
     </footer>

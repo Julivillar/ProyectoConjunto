@@ -96,7 +96,7 @@ class ProductController extends Controller
         $images = array();
 
         $product->name = $request->get('name');
-        $request->description = $request->get('description');
+        $product->description = $request->get('description');
         $product->category()->associate(Category::findOrFail($request->get('category')));
         $product->price = $request->get('price');
         $product->tax = $request->get('taxes');
