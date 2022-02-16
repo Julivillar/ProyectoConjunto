@@ -1,36 +1,49 @@
-@if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+<div class="flexContainer">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
+    <div class="flexContainer">
+        <a href="{{ route('products.index') }}">
+            <div id="logo" class="flexContainer"></div>
+        </a>
+    </div>
+
+    <a href="#">
+        <h1>Albir's glorious goods</h1>
+    </a>
+    @if (Route::has('login'))
+        <div class="flexContainer" id="divIconos">
+        @auth
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <x-jet-dropdown-link href="{{ route('logout') }}"
+                     onclick="event.preventDefault();
+                            this.closest('form').submit();">
+                {{ __('Log Out') }}
+            </x-jet-dropdown-link>
+        </form>
+            {{-- <a href="{{ route('profile.show') }}"><img src="/images/ico-user.png" class="icono" alt="icono usuario"></a> --}}
+            <a href="{{ route('profile.show') }}" class="miPerfil">Mi perfil</a>
+        @else
+            <a href="{{ route('login') }}"><img src="/images/ico-login.png" class="icono" alt="icono login"></a>
+            <a href="{{ route('login') }}" class="textIcoHidden"><span>Login</span></a>
+
+        @if (Route::has('register'))
+            <a href="{{ route('register') }}"><img src="/images/ico-user.png" class="icono" alt="icono usuario"></a>
+            <a href="{{ route('register') }}" class="textIcoHidden"><span>Registrarse</span></a>
+        @endif
+        @endauth
+            <a href="#"><img src="/images/ico-carrito.png" class="icono" alt="icono carrito"></a>
+            <span id="numCarrito">0</span>
+            <a href="#" class="textIcoHidden"><span>Carrito</span></a>
+
+        </div>
     @endif
-<div class="contenedor-logo-empresa">
-    <a href="">
-        <img src="" alt="Logo de la Empresa">
-    </a>
 </div>
-<div class="contenedor-logo-usuario">
-    <a href="">
-        <img src="" alt="Logo del usuario">
-    </a>
-</div>
-<div class="contenedor-logo-carrito">
 
-    <a href="">
-        <img src="" alt="Logo del carrito">
-    </a>
-</div>
-<nav>
+{{-- <nav>
     <ul class="categorias">
-        <li><a href="#" data-value=1 class='categoria'> Libros </a></li>
-        <li><a href="#" data-value=2 class='categoria'> Juegos </a></li>
-        <li><a href="#" data-value=3 class='categoria'> Complementos </a></li>
+        <li><a href="{{route('products.index', ['category' => 1])}}"  data-value=1 class='categoria'> Libros </a></li>
+        <li><a href="{{route('products.index', ['category' => 2])}}"  data-value=2 class='categoria'> Juegos </a></li>
+        <li><a href="{{route('products.index', ['category' => 3])}}"  data-value=3 class='categoria'> Complementos </a></li>
     </ul>
-</nav>
+</nav> --}}

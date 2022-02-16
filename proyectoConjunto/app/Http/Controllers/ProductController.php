@@ -18,11 +18,12 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)//
     {
+        $category = $request->get('category');
         $user = Auth::user();
 
-        return view('products.index', compact('user'));
+        return view('products.index', compact('user', 'category'));
     }
 
     /**
@@ -141,4 +142,10 @@ class ProductController extends Controller
         $product->delete();
         return redirect()->route('products.index');
     }
+
+    public function showPrivacy()
+    {
+        return view('products.privacy');
+    }
+
 }

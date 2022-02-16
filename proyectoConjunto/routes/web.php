@@ -20,20 +20,27 @@ use Illuminate\Http\Request;
     return view('welcome');
 }); */
 
+Route::get('/privacy-terms', [ProductController::class, 'showPrivacy'])
+    ->name('showPrivacy', 'products.showPrivacy');
+
 Route::resource('/', ProductController::class)
-->missing(function (Request $request){
-    return Redirect::route('products.index');
-});
+    ->missing(function (Request $request) {
+        return Redirect::route('products.index');
+    });
 
 Route::resource('/categories', CategoryController::class)
-    ->missing(function (Request $request){
-    return Redirect::route('categories.index');
-});
+    ->missing(function (Request $request) {
+        return Redirect::route('categories.index');
+    });
 
-Route::resource('/products', ProductController::class)
+/* Route::resource('/products', ProductController::class)
 ->missing(function (Request $request){
     return Redirect::route('products.index');
-});
+}); */
+Route::resource('/products', ProductController::class)
+    ->missing(function (Request $request) {
+        return Redirect::route('products.index');
+    });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

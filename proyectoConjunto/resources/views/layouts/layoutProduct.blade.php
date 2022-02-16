@@ -15,7 +15,7 @@
         @include('partials.header')
     </header>
     <nav>
-        @include('partials.navIndex')
+        @include('partials.nav')
     </nav>
     <main>
         <div class="flexContainer">
