@@ -4,7 +4,7 @@
 
 @section('cuerpo')
     <link rel="stylesheet" href="/css/style1.css">
-    <div class="textContent" id="contenido">
+    <div class="textContent">
 
 
         <div class="descripcion-producto">
@@ -28,9 +28,9 @@
             <p class="textoCantidad">Cantidad</p>
             <div class="contenedorBotones">
                 <div id="contenedorBtn">
-                    <button class="btn focuseado" type="button" id="menos" onclick="contadormenos('cantidad')">-</button>
-                    <input id="cantidad" class="focuseado" type="text" style="text-align: center;" value="1" aria-label="Cantidad" readonly>
-                    <button class="btn focuseado" type="button" id="mas" onclick="contadormas('cantidad')">+</button>
+                    <button class="btn" type="button" id="menos" onclick="contadormenos('cantidad')">-</button>
+                    <input id="cantidad" type="text" style="text-align: center;" value="1" readonly>
+                    <button class="btn" type="button" id="mas" onclick="contadormas('cantidad')">+</button>
                 </div>
                 <div id="fixAdd"><button id="btnAdd">Añadir</button></div>
             </div>

@@ -27,9 +27,9 @@
 
 @section('cuerpo')
 
-    <div class="textContent" id="contenido">
+    <div class="textContent">
 
     </div>
-    <div id="containerButtonLoad"><button id="loadButton" class="focuseado" tabindex="2">Cargar Más</button></div>
+    <div id="containerButtonLoad"><button id="loadButton">Cargar Más</button></div>
 
 @endsection

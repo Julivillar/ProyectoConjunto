@@ -8,7 +8,7 @@
 
 @section('cuerpo')
 
-    <div class="textContent mainBlanco" id="contenido">
+    <div class="textContent mainBlanco">
         <p>
             <strong>POLÍTICA DE PRIVACIDAD</strong>
         </p>

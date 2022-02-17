@@ -42,7 +42,7 @@ h1 {
     font-size: clamp(24px, 3.1vw, 46px);
 }
 
-.logo {
+#logo {
     background-image: url('../images/logoBlanco.png');
     height: 100px;
     min-width: 100px;
@@ -50,26 +50,21 @@ h1 {
     background-position: 80%;
     border-radius: 50%;
     background-size: 100% auto;
-
+    margin-left: 30px ;
 }
 
 #numCarrito {
     position: absolute;
-    max-width: 20px;
     min-width: 20px;
     height: 20px;
-    background-color: rgb(83, 0, 0);
+    background-color: red;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: inherit;
-    left: 25%;
-    bottom: 80%;
-}
-
-#contenedorNum {
-    position: relative;
+    right: 1%;
+    top: 6%;
 }
 
 #divIconos {
@@ -79,15 +74,6 @@ h1 {
 
 .textIcoHidden {
     display: none;
-}
-
-.enlaceIcono {
-    display: flex;
-    align-items: center;
-}
-
-#enlaceContenido {
-    text-align: center;
 }
 
 /* NAAV */
@@ -175,7 +161,7 @@ footer{
 }
 
 
-#footerTop .logo {
+#footerTop #logo {
     width: 100px;
     height: 100px;
     justify-content: center;
@@ -235,10 +221,17 @@ footer ul {
 /* main */
 
 
-
+.mainBlanco {
+    background-color: white;
+    color: black;
+}
 
 .mainBlanco p {
     padding: 16px 20px 0px;
+}
+
+body {
+    background-color: black;
 }
 
 .textContent {
@@ -254,10 +247,7 @@ footer ul {
 
 }
 
-.mainBlanco {
-    background-color: white;
-    color: black;
-    padding-bottom: 16px;
+.mainBlanco .textContent {
     display: block;
     text-align: center;
 }
@@ -280,7 +270,7 @@ main > .flexContainer {
 }
 
 .productContainer a{
-    color: #dddddd;
+    color: black;
 }
 
 .rating, .ratingYellow{
@@ -289,11 +279,11 @@ main > .flexContainer {
 }
 
 .ratingYellow {
-    color: #075300;
+    color: rgb(196, 196, 4);
 }
 
-.precio {
-    color: #DA3426;
+.precio p{
+    color: rgb(161, 1, 1);
     font-weight: 600;
 }
 
@@ -303,14 +293,7 @@ main > .flexContainer {
 
 .nombreProducto {
     font-weight: 600;
-    color: #5A60FB;
-}
-
-.focuseado:focus, #loadButton:focus, #btnAdd:focus {
-    font-weight: 700;
-    background-color: black;
-    color: white;
-    border-radius: 20px;
+    color: rgb(59, 59, 230);
 }
 
 /* MAIN PRODUCTO */
@@ -360,7 +343,7 @@ main > .flexContainer {
 
 .letraGris {
     font-size: .8125rem;
-    color: #725D5C;
+    color: #7a7a7a;
 
 }
 
@@ -483,13 +466,12 @@ main > .flexContainer {
         display: inline;
     }
 
-
     #divIconos {
         width: auto;
     }
 
-    .logo {
-        margin-left: 30px ;
+    #numCarrito {
+        right: 11%;
     }
 
     /* FOOTER */

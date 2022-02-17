@@ -20,11 +20,8 @@ use Illuminate\Http\Request;
     return view('welcome');
 }); */
 
-Route::get('/privacy', [ProductController::class, 'showPrivacy'])
+Route::get('/privacy-terms', [ProductController::class, 'showPrivacy'])
     ->name('showPrivacy', 'products.showPrivacy');
-
-Route::get('/terms', [ProductController::class, 'showTerms'])
-    ->name('showTerms', 'products.showTerms');
 
 Route::resource('/', ProductController::class)
     ->missing(function (Request $request) {
