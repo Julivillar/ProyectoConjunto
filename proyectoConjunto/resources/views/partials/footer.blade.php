@@ -31,8 +31,8 @@
     </div>
     <div>
         <ul>
-            <li><a href="../../../privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="{{ route('showPrivacy') }}">Privacy Policy</a></li>
+            <li><a href="{{ route('showTerms') }}">Terms of Service</a></li>
             <li><a href="#">Mapa Web</a></li>
         </ul>
     </div>

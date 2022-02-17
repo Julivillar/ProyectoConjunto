@@ -2,7 +2,7 @@
 
     <div class="flexContainer">
         <a href="{{ route('products.index') }}">
-            <div id="logo" class="flexContainer"></div>
+            <div class="flexContainer logo"></div>
         </a>
     </div>
 
@@ -32,9 +32,11 @@
             <a href="{{ route('register') }}" class="textIcoHidden"><span>Registrarse</span></a>
         @endif
         @endauth
-            <a href="#"><img src="/images/ico-carrito.png" class="icono" alt="icono carrito"></a>
+
+
+            <a href="{{ route('showCart', $_COOKIE['cart']) }}"><img src="/images/ico-carrito.png" class="icono" alt="icono carrito"></a>
             <span id="numCarrito">0</span>
-            <a href="#" class="textIcoHidden"><span>Carrito</span></a>
+            <a href="{{ route('showCart', $_COOKIE['cart']) }}" class="textIcoHidden"><span>Carrito</span></a>
 
         </div>
     @endif

@@ -1,5 +1,6 @@
 @extends('layouts.layoutProduct')
 
+
 @section('titulo', 'Producto')
 
 @section('cuerpo')
@@ -11,18 +12,17 @@
             <h1 id="tituloProducto">{{ $product->name }}</h1>
             <p id="precioCalculado">
                 @php
-               if ($product->offer != 1) {
-                        $precioFinal = $product->price + ($product->price * ($product->tax/100));
-                }
-               else {
-                        $precioFinal -= ($product->price * ($product->discount/100));
-               }
-               print($precioFinal.' €');
-               @endphp
+                    if ($product->offer != 1) {
+                        $precioFinal = $product->price + $product->price * ($product->tax / 100);
+                    } else {
+                        $precioFinal -= $product->price * ($product->discount / 100);
+                    }
+                    print $precioFinal . ' €';
+                @endphp
             </p>
             <p class="letraGris">Impuestos incluidos</p>
-            @if ($product->stock <=5)
-            <p class="letraGris">Solo quedan {{$product->stock}} unidades</p>
+            @if ($product->stock <= 5)
+                <p class="letraGris">Solo quedan {{ $product->stock }} unidades</p>
             @endif
 
             <p class="textoCantidad">Cantidad</p>
@@ -37,7 +37,7 @@
             <p class="textoCantidad">Descripción</p>
             <p id="descripcion">{{ $product->description }}</p>
             @if (isset($user->role) && $user->role == 'Admin')
-                <div class="btnEditar"><a href="{{ route('products.edit', $product->id) }}" >Editar</a></div>
+                <div class="btnEditar"><a href="{{ route('products.edit', $product->id) }}">Editar</a></div>
             @endif
         </div>
 
@@ -53,10 +53,11 @@
     </div>
 
     </div>
-    <script>
+    <script defer>
         /* SCRIPT GALERÍA IMÁGENES */
         let zFondos150 = ["url('/images/{{ $product->images[1]->path }}')",
-            "url('/images/{{ $product->images[0]->path }}')"];
+            "url('/images/{{ $product->images[0]->path }}')"
+        ];
         let zFondos600 = ["url('/images/{{ $product->images[1]->path }}')",
             "url('/images/{{ $product->images[0]->path }}')"
         ];
@@ -98,6 +99,42 @@
             } else {
                 cant.value = "0";
             }
+        }
+
+
+        let addButton = document.querySelector('#btnAdd');
+
+        addButton.onclick = function() {
+            let quantity = document.querySelector('#cantidad');
+            let shoppingCart = JSON.parse(localStorage.getItem('carrito'));
+            console.log(shoppingCart);
+            if (shoppingCart === "") {
+                shoppingCart = [];
+            }
+            console.log(shoppingCart);
+            let newProduct = {
+                name: "{{ $product->name }}",
+                price: "{{ $precioFinal }}",
+                id: "{{ $product->id }}",
+            };
+            if (shoppingCart.length != null) {
+                if (shoppingCart.some(product => product.name === '{{ $product->name }}')) {
+                    for (let product of shoppingCart) {
+                        if (product.name === '{{ $product->name }}') {
+                            product.quantity = Number(product.quantity) + Number(quantity.value);
+                        }
+                    }
+                } else {
+                    newProduct.quantity = Number(quantity.value);
+                    shoppingCart.push(newProduct);
+                }
+            } else {
+                newProduct.quantity = Number(quantity.value);
+                shoppingCart.push(newProduct);
+            }
+            localStorage.setItem('carrito', JSON.stringify(shoppingCart));
+            document.cookie = 'cart='+localStorage.getItem('carrito', shoppingCart);
+            console.log(document.cookie);
         }
     </script>
 

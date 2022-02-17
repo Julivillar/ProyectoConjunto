@@ -20,6 +20,12 @@ use Illuminate\Http\Request;
     return view('welcome');
 }); */
 
+Route::get('/shopping-cart', [ProductController::class, 'showCart'])
+    ->name('showCart', 'products.showCart');
+
+Route::get('/terms', [ProductController::class, 'showTerms'])
+    ->name('showTerms', 'products.showTerms');
+
 Route::get('/privacy-terms', [ProductController::class, 'showPrivacy'])
     ->name('showPrivacy', 'products.showPrivacy');
 

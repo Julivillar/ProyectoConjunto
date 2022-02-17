@@ -148,4 +148,15 @@ class ProductController extends Controller
         return view('products.privacy');
     }
 
+    public function showTerms()
+    {
+        return view('products.terms');
+    }
+
+    public function showCart($shoppingCart)
+    {
+        $thing = $shoppingCart;
+        return view('products.cart', compact('thing'));
+    }
+
 }
