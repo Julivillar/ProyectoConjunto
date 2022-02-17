@@ -148,4 +148,9 @@ class ProductController extends Controller
         return view('products.privacy');
     }
 
+    public function showTerms()
+    {
+        return view('products.terms');
+    }
+
 }

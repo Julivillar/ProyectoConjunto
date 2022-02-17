@@ -31,47 +31,40 @@ if (currentCategory === 0) {
                 if (productsJSON[1][i].product_id === product.id && productsJSON[1][i].default == 1) {
                     let prod_img = productsJSON[1][i];
                     img.src = "/images/" + prod_img.path;
+                    img.alt = "imagen producto";
                 }
             }
 
             div.classList.add('flexContainer', 'productContainer');
-            /* IMAGEN */
-            let aImg = document.createElement('a');
-            aImg.href = `/products/${product.id}`;
-            aImg.append(img);
+                /* IMAGEN */
+                let aImg = document.createElement('a');
+                aImg.href = `/products/${product.id}`;
+                aImg.append(img);
 
-            /* NOMBRE PRODUCTO */
-            let aName = document.createElement('a');
-            aName.href = `/products/${product.id}`;
+                /* NOMBRE PRODUCTO */
+                let pName = document.createElement('p');
+                pName.className = "nombreProducto";
+                pName.textContent = product.name;
+                aImg.append(pName);
 
-            let pName = document.createElement('p');
-            pName.className = "nombreProducto";
-            pName.textContent = product.name;
-            aName.append(pName);
+                /* ESTRELLITAS */
+                let spanStar = document.createElement('span');
+                spanStar.className = "rating";
+                spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
+                /* PRECIO */
+                let price = document.createElement('p');
+                price.className = "precio";
+                price.textContent = product.price + '€';
+                aImg.append(price);
 
-            /* ESTRELLITAS */
-            let spanStar = document.createElement('span');
-            spanStar.className = "rating";
-            spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
+                /* STOCK */
+                let stock = document.createElement('p');
+                stock.textContent = 'Stock: ' + product.stock;
+                stock.className = "stock";
 
-            // let category = document.createElement('p');
-            // category.textContent = 'Categoria ' + product.category.name;
-            /* PRECIO */
-            let aPrice = document.createElement('a');
-            aPrice.href = `/products/${product.id}`;
-            aPrice.className = "precio";
-            let price = document.createElement('p');
-            price.textContent = product.price + '€';
-            aPrice.append(price);
-
-            /* STOCK */
-            let stock = document.createElement('p');
-            stock.textContent = 'Stock: ' + product.stock;
-            stock.className = "stock";
-
-            /* INSERCIÓN */
-            div.append(aImg, aName, spanStar, aPrice, stock);
-            document.querySelector('.textContent').append(div);
+                /* INSERCIÓN */
+                div.append(aImg, spanStar, stock);
+                document.querySelector('.textContent').append(div);
         }
         counter = counter + 10;
 
@@ -89,47 +82,40 @@ if (currentCategory === 0) {
                 if (productsJSON[1][i].product_id === product.id && productsJSON[1][i].default == 1) {
                     let prod_img = productsJSON[1][i];
                     img.src = "/images/" + prod_img.path;
+                    img.alt = "imagen producto";
                 }
             }
 
             div.classList.add('flexContainer', 'productContainer');
-            /* IMAGEN */
-            let aImg = document.createElement('a');
-            aImg.href = `/products/${product.id}`;
-            aImg.append(img);
+                /* IMAGEN */
+                let aImg = document.createElement('a');
+                aImg.href = `/products/${product.id}`;
+                aImg.append(img);
 
-            /* NOMBRE PRODUCTO */
-            let aName = document.createElement('a');
-            aName.href = `/products/${product.id}`;
+                /* NOMBRE PRODUCTO */
+                let pName = document.createElement('p');
+                pName.className = "nombreProducto";
+                pName.textContent = product.name;
+                aImg.append(pName);
 
-            let pName = document.createElement('p');
-            pName.className = "nombreProducto";
-            pName.textContent = product.name;
-            aName.append(pName);
+                /* ESTRELLITAS */
+                let spanStar = document.createElement('span');
+                spanStar.className = "rating";
+                spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
+                /* PRECIO */
+                let price = document.createElement('p');
+                price.className = "precio";
+                price.textContent = product.price + '€';
+                aImg.append(price);
 
-            /* ESTRELLITAS */
-            let spanStar = document.createElement('span');
-            spanStar.className = "rating";
-            spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
+                /* STOCK */
+                let stock = document.createElement('p');
+                stock.textContent = 'Stock: ' + product.stock;
+                stock.className = "stock";
 
-            // let category = document.createElement('p');
-            // category.textContent = 'Categoria ' + product.category.name;
-            /* PRECIO */
-            let aPrice = document.createElement('a');
-            aPrice.href = `/products/${product.id}`;
-            aPrice.className = "precio";
-            let price = document.createElement('p');
-            price.textContent = product.price + '€';
-            aPrice.append(price);
-
-            /* STOCK */
-            let stock = document.createElement('p');
-            stock.textContent = 'Stock: ' + product.stock;
-            stock.className = "stock";
-
-            /* INSERCIÓN */
-            div.append(aImg, aName, spanStar, aPrice, stock);
-            document.querySelector('.textContent').append(div);
+                /* INSERCIÓN */
+                div.append(aImg, spanStar, stock);
+                document.querySelector('.textContent').append(div);
         }
         counter = counter + 2;
     })
@@ -149,6 +135,7 @@ document.querySelector('#loadButton').onclick = function () {
                     if (productsJSON[1][i].product_id === product.id && productsJSON[1][i].default == 1) {
                         let prod_img = productsJSON[1][i];
                         img.src = "/images/" + prod_img.path;
+                        img.alt = "imagen producto";
                     }
                 }
 
@@ -159,28 +146,20 @@ document.querySelector('#loadButton').onclick = function () {
                 aImg.append(img);
 
                 /* NOMBRE PRODUCTO */
-                let aName = document.createElement('a');
-                aName.href = `/products/${product.id}`;
-
                 let pName = document.createElement('p');
                 pName.className = "nombreProducto";
                 pName.textContent = product.name;
-                aName.append(pName);
+                aImg.append(pName);
 
                 /* ESTRELLITAS */
                 let spanStar = document.createElement('span');
                 spanStar.className = "rating";
                 spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
-
-                // let category = document.createElement('p');
-                // category.textContent = 'Categoria ' + product.category.name;
                 /* PRECIO */
-                let aPrice = document.createElement('a');
-                aPrice.href = `/products/${product.id}`;
-                aPrice.className = "precio";
                 let price = document.createElement('p');
+                price.className = "precio";
                 price.textContent = product.price + '€';
-                aPrice.append(price);
+                aImg.append(price);
 
                 /* STOCK */
                 let stock = document.createElement('p');
@@ -188,9 +167,8 @@ document.querySelector('#loadButton').onclick = function () {
                 stock.className = "stock";
 
                 /* INSERCIÓN */
-                div.append(aImg, aName, spanStar, aPrice, stock);
+                div.append(aImg, spanStar, stock);
                 document.querySelector('.textContent').append(div);
-
             }
             counter = counter + 10;
         })
@@ -206,6 +184,7 @@ document.querySelector('#loadButton').onclick = function () {
                     if (productsJSON[1][i].product_id === product.id && productsJSON[1][i].default == 1) {
                         let prod_img = productsJSON[1][i];
                         img.src = "/images/" + prod_img.path;
+                        img.alt = "imagen producto";
                     }
                 }
 
@@ -216,28 +195,20 @@ document.querySelector('#loadButton').onclick = function () {
                 aImg.append(img);
 
                 /* NOMBRE PRODUCTO */
-                let aName = document.createElement('a');
-                aName.href = `/products/${product.id}`;
-
                 let pName = document.createElement('p');
                 pName.className = "nombreProducto";
                 pName.textContent = product.name;
-                aName.append(pName);
+                aImg.append(pName);
 
                 /* ESTRELLITAS */
                 let spanStar = document.createElement('span');
                 spanStar.className = "rating";
                 spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
-
-                // let category = document.createElement('p');
-                // category.textContent = 'Categoria ' + product.category.name;
                 /* PRECIO */
-                let aPrice = document.createElement('a');
-                aPrice.href = `/products/${product.id}`;
-                aPrice.className = "precio";
                 let price = document.createElement('p');
+                price.className = "precio";
                 price.textContent = product.price + '€';
-                aPrice.append(price);
+                aImg.append(price);
 
                 /* STOCK */
                 let stock = document.createElement('p');
@@ -245,7 +216,7 @@ document.querySelector('#loadButton').onclick = function () {
                 stock.className = "stock";
 
                 /* INSERCIÓN */
-                div.append(aImg, aName, spanStar, aPrice, stock);
+                div.append(aImg, spanStar, stock);
                 document.querySelector('.textContent').append(div);
             }
             counter = counter + 2;
