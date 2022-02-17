@@ -2,9 +2,13 @@
 
 @section('titulo', 'Politica de Privacidad')
 
+@push('styles')
+    <link rel="stylesheet" href="css/style1.css">
+@endpush
+
 @section('cuerpo')
 
-    <div class="textContent">
+    <div class="textContent mainBlanco">
         <p>
             <strong>POLÍTICA DE PRIVACIDAD</strong>
         </p>
