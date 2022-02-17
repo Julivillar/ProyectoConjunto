@@ -109,7 +109,6 @@ class ProductApiController extends Controller
     public function showProducts($id, $counter)
     {
         $products = Product::where('category_id', $id)
-            ->where('visibility', 1)
             ->orderBy('id', 'asc')
             ->skip($counter)
             ->take(2)
