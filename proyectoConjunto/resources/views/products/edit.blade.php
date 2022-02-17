@@ -9,7 +9,7 @@
 @section('titulo', 'Actualizar')
 
 @section('cuerpo')
-    <div class="textContent">
+    <div class="textContent" id="contenido">
         <form action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data" method="post"
             class="formClass">
             @csrf
