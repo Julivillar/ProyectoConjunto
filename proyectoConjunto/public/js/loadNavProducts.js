@@ -2,7 +2,6 @@ let counter = 0;
 //let currentCategory = 0;
 
 let categories = document.querySelectorAll('.categoria');
-console.log(categories);
 
 for (let category of categories) {
     category.addEventListener('click', function (event) {
@@ -28,44 +27,32 @@ for (let category of categories) {
                                 img.src = "/images/" + prod_img.path;
                             }
                         }
-
                         div.classList.add('flexContainer', 'productContainer');
                         /* IMAGEN */
                         let aImg = document.createElement('a');
                         aImg.href = `/products/${product.id}`;
+                        aImg.className = "focuseado";
                         aImg.append(img);
-
                         /* NOMBRE PRODUCTO */
-                        let aName = document.createElement('a');
-                        aName.href = `/products/${product.id}`;
-
                         let pName = document.createElement('p');
                         pName.className = "nombreProducto";
                         pName.textContent = product.name;
-                        aName.append(pName);
-
+                        aImg.append(pName);
                         /* ESTRELLITAS */
                         let spanStar = document.createElement('span');
                         spanStar.className = "rating";
                         spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
-
-                        // let category = document.createElement('p');
-                        // category.textContent = 'Categoria ' + product.category.name;
                         /* PRECIO */
-                        let aPrice = document.createElement('a');
-                        aPrice.href = `/products/${product.id}`;
-                        aPrice.className = "precio";
                         let price = document.createElement('p');
+                        price.className = "precio";
                         price.textContent = product.price + '€';
-                        aPrice.append(price);
-
+                        aImg.append(price);
                         /* STOCK */
                         let stock = document.createElement('p');
                         stock.textContent = 'Stock: ' + product.stock;
                         stock.className = "stock";
-
                         /* INSERCIÓN */
-                        div.append(aImg, aName, spanStar, aPrice, stock);
+                        div.append(aImg, spanStar, stock);
                         document.querySelector('.textContent').append(div);
                     }
                     counter = counter + 2;
@@ -76,10 +63,7 @@ for (let category of categories) {
 }
 
 async function fetchProductsJSON(category) {
-    console.log(counter);
     let products = await fetch(`/api/products/${category}/${counter}`);
-    console.log(products);
     let jsonProducts = await products.json();
-    console.log(jsonProducts);
     return jsonProducts;
 }

@@ -21,6 +21,9 @@ class User extends Authenticatable
     public function directions(){
         return $this->hasMany(Address::class);
     }
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
     /**
      * The attributes that are mass assignable.
      *

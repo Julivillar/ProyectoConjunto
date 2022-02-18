@@ -1,7 +1,7 @@
 <div id="footerTop">
 
     <div class="flexContainer">
-        <a href="index.html" class="focuseado">
+        <a href="{{ route('products.index') }}" class="focuseado">
             <div class="logo"></div>
         </a>
     </div>
@@ -26,7 +26,7 @@
         <ul>
             <li><a href="{{ route('showPrivacy') }}" class="focuseado">Privacy Policy</a></li>
             <li><a href="{{ route('showTerms') }}" class="focuseado">Terms of Service</a></li>
-            <li><a href="#" class="focuseado">Mapa Web</a></li>
         </ul>
     </div>
 </div>
+

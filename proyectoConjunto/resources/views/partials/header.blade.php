@@ -6,7 +6,7 @@
         </a>
     </div>
 
-    <a href="#" class="focuseado">
+    <a href="{{ route('products.index') }}" class="focuseado">
         <h1>Albir's glorious goods</h1>
     </a>
     @if (Route::has('login'))
@@ -32,7 +32,7 @@
         @endif
         @endauth
             <div id="contenedorNum">
-                <a href="#" role="navigation" aria-label="Productos añadidos" class="focuseado enlaceIcono"><img src="/images/ico-carrito.png" class="icono" alt="icono carrito" ><span class="textIcoHidden">Carrito</span></a>
+                <a href="{{route('carrito')}}" role="navigation" aria-label="Productos añadidos" class="focuseado enlaceIcono"><img src="/images/ico-carrito.png" class="icono" alt="icono carrito" ><span class="textIcoHidden">Carrito</span></a>
                 <span id="numCarrito">0</span></div>
                 <a href="#contenido" tabindex="1" class="focuseado" id="enlaceContenido">Ir a Contenido</a>
             </div>

@@ -50,7 +50,6 @@ h1 {
     background-position: 80%;
     border-radius: 50%;
     background-size: 100% auto;
-
 }
 
 #numCarrito {
@@ -67,7 +66,6 @@ h1 {
     left: 25%;
     bottom: 80%;
 }
-
 #contenedorNum {
     position: relative;
 }
@@ -85,7 +83,6 @@ h1 {
     display: flex;
     align-items: center;
 }
-
 #enlaceContenido {
     text-align: center;
 }
@@ -241,6 +238,8 @@ footer ul {
     padding: 16px 20px 0px;
 }
 
+
+
 .textContent {
     padding-top: 16px;
     display: flex;
@@ -251,7 +250,7 @@ footer ul {
     border-left: 5px solid black;
     border-right: 5px solid black;
     justify-content: space-around;
-
+    min-height: 500px;
 }
 
 .mainBlanco {
@@ -305,7 +304,6 @@ main > .flexContainer {
     font-weight: 600;
     color: #5A60FB;
 }
-
 .focuseado:focus, #loadButton:focus, #btnAdd:focus {
     font-weight: 700;
     background-color: black;
@@ -361,7 +359,6 @@ main > .flexContainer {
 .letraGris {
     font-size: .8125rem;
     color: #725D5C;
-
 }
 
 .descripcion-producto {
@@ -420,6 +417,7 @@ main > .flexContainer {
     background-color: rgb(9, 128, 19);
     border-radius: 20px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 #loadButton {
@@ -464,10 +462,27 @@ main > .flexContainer {
 
 /* MAIN EDIT */
 .form {
-    margin-bottom: 16px;
+    margin: 16px;
+}
+#tituloEdit {
+    width: 100%;
+    text-align: center;
+}
+
+.editForm {
+    display:none;
 }
 
 #botonGuardar {
+    background-color: rgb(9, 128, 19);
+    color: white;
+    border-radius: 20px;
+    width: 60px;
+    height: 20px;
+    cursor: pointer;
+}
+
+#botonCancelar {
     background-color: rgb(9, 128, 19);
     color: white;
     border-radius: 20px;
@@ -482,7 +497,6 @@ main > .flexContainer {
     .textIcoHidden {
         display: inline;
     }
-
 
     #divIconos {
         width: auto;

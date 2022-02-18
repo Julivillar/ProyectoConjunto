@@ -25,16 +25,31 @@ for (let category of categories) {
                     }
 
                     div.classList.add('flexContainer', 'productContainer');
-                    let a = document.createElement('a');
-                    a.textContent = 'Nombre: ' + product.name;
-                    a.href = `/products/${product.id}`;
-                    // let category = document.createElement('p');
-                    // category.textContent = 'Categoria ' + product.category.name;
+                    /* IMAGEN */
+                    let aImg = document.createElement('a');
+                    aImg.href = `/products/${product.id}`;
+                    aImg.className = "focuseado";
+                    aImg.append(img);
+                    /* NOMBRE PRODUCTO */
+                    let pName = document.createElement('p');
+                    pName.className = "nombreProducto";
+                    pName.textContent = product.name;
+                    aImg.append(pName);
+                    /* ESTRELLITAS */
+                    let spanStar = document.createElement('span');
+                    spanStar.className = "rating";
+                    spanStar.innerHTML = '<span class="ratingYellow">&#9733;&#9733;&#9733;&#9733;</span>&#9733;'
+                    /* PRECIO */
                     let price = document.createElement('p');
-                    price.textContent = 'Precio: ' + product.price + '€';
+                    price.className = "precio";
+                    price.textContent = product.price + '€';
+                    aImg.append(price);
+                    /* STOCK */
                     let stock = document.createElement('p');
                     stock.textContent = 'Stock: ' + product.stock;
-                    div.append(img, a, price, stock);
+                    stock.className = "stock";
+                    /* INSERCIÓN */
+                    div.append(aImg, spanStar, stock);
                     document.querySelector('.textContent').append(div);
                 }
                 counter = counter + 2;
@@ -63,8 +78,6 @@ document.querySelector('#loadButton').onclick = function () {
                 let a = document.createElement('a');
                 a.textContent = 'Nombre: ' + product.name;
                 a.href = `/products/${product.id}`;
-                // let category = document.createElement('p');
-                // category.textContent = 'Categoria ' + product.category.name;
                 let price = document.createElement('p');
                 price.textContent = 'Precio: ' + product.price + '€';
                 let stock = document.createElement('p');
@@ -94,8 +107,6 @@ document.querySelector('#loadButton').onclick = function () {
                 let a = document.createElement('a');
                 a.textContent = 'Nombre: ' + product.name;
                 a.href = `/products/${product.id}`;
-                // let category = document.createElement('p');
-                // category.textContent = 'Categoria ' + product.category.name;
                 let price = document.createElement('p');
                 price.textContent = 'Precio: ' + product.price + '€';
                 let stock = document.createElement('p');
@@ -109,13 +120,7 @@ document.querySelector('#loadButton').onclick = function () {
 }
 
 async function fetchProductsJSON(category) {
-    console.log(counter);
-    // let url = "{{ route('productsApi.showProducts', ['id' => ':category', 'counter' => ':counter']) }}";
-    // url = url.replace(':category', category);
-    // url = url.replace(':counter', counter);
     let products = await fetch(`/api/products/${category}/${counter}`);
-    console.log(products);
     let jsonProducts = await products.json();
-    console.log(jsonProducts);
     return jsonProducts;
 }

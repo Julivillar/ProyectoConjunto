@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <header role="banner">
+    <header>
         @include('partials.header')
     </header>
     <nav>

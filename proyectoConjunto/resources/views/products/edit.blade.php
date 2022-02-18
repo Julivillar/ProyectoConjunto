@@ -26,8 +26,8 @@
             <div class="form" id="descripcion">
                 <label for="description">Descripcion: </label>
                 <textarea name="description" id="description" cols="30" rows="2">
-                    {{ old('description') ? old('description') : $product->description }}
-                </textarea>
+                        {{ old('description') ? old('description') : $product->description }}
+                    </textarea>
                 <span id="errorDescription" class="errores"> El campo Descripcion no puede estar vacio</span>
             </div>
             @error('descripcion')
@@ -38,7 +38,8 @@
                 <label for="category">Categoria: </label>
                 <select name="category" id="category" class="form-control">
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $category->id == $product->category->id ? 'selected' : '' }}>
+                        <option value="{{ $category->id }}"
+                            {{ $category->id == $product->category->id ? 'selected' : '' }}>
                             {{ old('category') ? old('category') : $category->name }}
                         </option>
                     @endforeach

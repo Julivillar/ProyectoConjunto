@@ -1,36 +1,41 @@
 
 let form = document.querySelector('.formClass');
+let cancelButton = document.querySelector('#botonCancelar');
+let showFormButton = document.querySelector('.btnEditar');
+showFormButton.onclick = function () {
+    form.style.display = 'block';
+}
+cancelButton.onclick = function (event) {
+    event.preventDefault();
+    form.style.display = 'none';
+}
 
-document.querySelector('.formClass').onsubmit = function(event) {
+form.onsubmit = function (event) {
     let correctData = true;
     event.preventDefault()
     if (form.elements['name'].value == false) {
         correctData = false;
         form.querySelector('#errorName').style.display = 'inline';
     } else {
-        removeWhiteSpaces(form.elements['name'].value);
+        form.elements['name'].value = removeWhiteSpaces(form.elements['name'].value);
         form.querySelector('#errorName').style.display = 'none';
     }
     if (form.elements['description'].value == false) {
         correctData = false;
         form.querySelector('#errorDescription').style.display = 'inline';
     } else {
+        form.elements['description'].value = removeWhiteSpaces(form.elements['description'].value);
         form.querySelector('#errorDescription').style.display = 'none';
     }
-    // if (form.elements['category'].value == false) {
-    //     form.querySelector('#errorCategory').style.display = 'inline';
-    // } else {
-    //     form.querySelector('#errorCategory').style.display = 'none';
-    // }
     if (isNaN(form.elements['price'].value) || form.elements['price'].value < 0 || !checkDecimals(form.elements[
-            'price'].value)) {
+        'price'].value)) {
         correctData = false;
         form.querySelector('#errorPrice').style.display = 'inline';
     } else {
         form.querySelector('#errorPrice').style.display = 'none';
     }
     if (isNaN(form.elements['discount'].value) || form.elements['discount'].value < 0 || form.elements[
-            'discount'].value > 100 || !checkDecimals(form.elements['discount'].value)) {
+        'discount'].value > 100 || !checkDecimals(form.elements['discount'].value)) {
         correctData = false;
         form.querySelector('#errorDiscount').style.display = 'inline';
     } else {
@@ -50,13 +55,27 @@ document.querySelector('.formClass').onsubmit = function(event) {
     } else {
         form.querySelector('#errorStock').style.display = 'none';
     }
-    // if (form.elements['image'].files.length < 0 || !checkFileExtension(form.elements['image'].value)) {
-    //     form.querySelector('#errorImage').style.display = 'inline';
-    // } else {
-    //     form.querySelector('#errorImage').style.display = 'none';
-    // }
     if (correctData === true) {
-        form.submit(form.action,{method:'post', body: new FormData(form)});
+        asyncUpdate(form).then(productJSON => {
+            for (let product of productJSON) {
+                form.style.display = 'none';
+                document.querySelector('#tituloProducto').textContent = product.name;
+                if (product.offer != 1) {
+                    let precioFinal = Number(product.price) + (Number(product.price) * (Number(product.tax) / 100));
+                    document.querySelector('#precioCalculado').textContent = precioFinal + ' €';
+                } else {
+                    let precioFinal = Number(product.price) - Number(product.price) * (Number(product.discount) / 100);
+                    document.querySelector('#precioCalculado').textContent = precioFinal + ' €';
+                }
+                if (product.stock <= 5) {
+                    document.querySelector('#avisoStock').style.display = 'block'
+                    document.querySelector('#avisoStock').textContent = 'Solo quedan ' + product.stock + ' unidades';
+                } else {
+                    document.querySelector('#avisoStock').style.display = 'none';
+                }
+                document.querySelector('#descripcion').textContent = product.description;
+            }
+        });
     }
     correctData = true;
 }
@@ -94,4 +113,10 @@ function removeWhiteSpaces(str) {
     }
     filteredStr = filteredStr.join(' ');
     return filteredStr;
+}
+
+async function asyncUpdate(form) {
+    let response = await fetch(form.action, { method: 'post', body: new FormData(form) });
+    let productJson = await response.json();
+    return productJson;
 }

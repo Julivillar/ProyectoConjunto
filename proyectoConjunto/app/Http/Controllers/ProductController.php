@@ -68,8 +68,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $categories = Category::get();
         $user = Auth::user();
-        return view('products.show', compact('product', 'user'));
+        return view('products.show', compact('product', 'user', 'categories'));
     }
 
     /**
@@ -97,7 +98,7 @@ class ProductController extends Controller
         $images = array();
 
         $product->name = $request->get('name');
-        $request->description = $request->get('description');
+        $product->description = $request->get('description');
         $product->category()->associate(Category::findOrFail($request->get('category')));
         $product->price = $request->get('price');
         $product->tax = $request->get('taxes');
@@ -151,6 +152,14 @@ class ProductController extends Controller
     public function showTerms()
     {
         return view('products.terms');
+    }
+
+    public function offers(Product $product)
+    {
+        return view('products.ofertas');
+    }
+    public function carrito(){
+        return view('products.carrito');
     }
 
 }

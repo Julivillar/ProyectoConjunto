@@ -1,37 +1,4 @@
-// async function fetchCategoriesJSON() {
-//     let categories = await fetch("{{ route('categoriesApi.index') }}");
-//     console.log(categories);
-//     let categoriesJSON = await categories.json();
-//     console.log(categoriesJSON);
-//     return categoriesJSON;
-// }
-
-// fetchCategoriesJSON().then(categories => {
-//     for (let category of categories) {
-//         let option = document.createElement('option');
-//         option.setAttribute('value', category.id);
-//         option.textContent = category.name;
-//         form.elements['category'].append(option);
-//     }
-// })
 let form = document.querySelector('.formClass');
-// let createProductButton = document.querySelector('#createProductButton');
-// let submitButton = document.querySelector('#submitButton');
-// let cancelButton = document.querySelector('#cancelButton');
-
-
-
-// createProductButton.onclick = function() {
-//     form.style.display = 'block';
-//     createProductButton.style.display = 'none';
-// }
-
-// cancelButton.onclick = function() {
-//     document.querySelector('#resetButton').click();
-//     form.style.display = 'none';
-//     createProductButton.style.display = 'inline';
-// }
-
 document.querySelector('.formClass').onsubmit = function (event) {
     let correctData = true;
     event.preventDefault()
@@ -81,19 +48,12 @@ document.querySelector('.formClass').onsubmit = function (event) {
     } else {
         form.querySelector('#errorStock').style.display = 'none';
     }
-    // if (form.elements['image'].files.length < 0 || !checkFileExtension(form.elements['image'].value)) {
-    //     form.querySelector('#errorImage').style.display = 'inline';
-    // } else {
-    //     form.querySelector('#errorImage').style.display = 'none';
-    // }
     if (correctData === true) {
         form.elements['name'].value = removeWhiteSpaces(form.elements['name'].value);
         form.elements['description'].value = removeWhiteSpaces(form.elements['description'].value);
         async function submitForm() {
             let response = await fetch(form.action, { method: 'post', body: new FormData(form) });
-            console.log(response);
             let product = await response.json();
-            console.log(product)
             return product;
         }
         submitForm().then(product => {

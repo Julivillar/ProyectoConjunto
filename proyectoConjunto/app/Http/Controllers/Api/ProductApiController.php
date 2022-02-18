@@ -90,9 +90,49 @@ class ProductApiController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $formInput = $request->all();
+        $images = array();
+
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->category()->associate(Category::findOrFail($request->get('category')));
+        $product->price = $request->get('price');
+        $product->tax = $request->get('taxes');
+        $product->discount = $request->get('discount');
+        $product->stock = $request->get('stock');
+        if ($request->has('visibility')) {
+            $product->visibility = 1;
+        } else {
+            $product->visibility = 0;
+        }
+        if ($request->has('offer')) {
+            $product->offer = 1;
+        } else {
+            $product->offer = 0;
+        }
+
+        $product->save();
+
+        if ($files = $request->file('images')) {
+            foreach ($files as $file) {
+                $name = $file->hashName();
+                $file->move('images', $name);
+                $images[] = $name;
+                Image::create(array_merge(
+                    $formInput,
+                    [
+                        'product_id' => $product->id,
+                        'url' => ($name),
+                        'path' => ($name),
+                        'default' => 0,
+                    ],
+                ));
+            }
+        }
+
+        return response()->json([$product], 200);
     }
 
     /**
@@ -109,7 +149,6 @@ class ProductApiController extends Controller
     public function showProducts($id, $counter)
     {
         $products = Product::where('category_id', $id)
-            ->where('visibility', 1)
             ->orderBy('id', 'asc')
             ->skip($counter)
             ->take(2)

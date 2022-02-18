@@ -1,0 +1,1 @@
+Para entrar a las ofertas tienes que poner en la URL: /products/offers
